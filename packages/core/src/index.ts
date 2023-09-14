@@ -1,1 +1,10 @@
-export { registerMicroApps } from './apis'
+export interface Options {
+
+}
+
+export function setupApp(
+  options: Options,
+): void {
+  // if()
+
+}
