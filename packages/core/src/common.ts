@@ -1,10 +1,15 @@
-import type { Options } from './index'
+import type { BaseOptions } from './index'
 
-export const idToSandboxCacheMap = new Map<string, Options>()
+interface SandboxCache {
+  wujie?: any
+  options?: BaseOptions
+}
+
+export const idToSandboxCacheMap = new Map<string, SandboxCache>()
 
 export function addSandboxCacheWithOptions(
   id: string,
-  options: Options,
+  options: SandboxCache,
 ) {
   const wujieCache = idToSandboxCacheMap.get(id)
 
@@ -12,4 +17,8 @@ export function addSandboxCacheWithOptions(
     idToSandboxCacheMap.set(id, { ...wujieCache, ...options })
   else
     idToSandboxCacheMap.set(id, options)
+}
+
+export function getWujieById(id: string) {
+  return idToSandboxCacheMap.get(id)
 }
